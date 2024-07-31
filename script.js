@@ -5,6 +5,8 @@ let nounInput = document.getElementById("noun");
 let verbInput = document.getElementById("verb");
 let adjectiveInput = document.getElementById("adjective");
 let submitBtn = document.getElementById("submit_button");
+let storyResult = document.getElementById("story_result");
+let formContainer = document.querySelector("form");
 
 // Functions
 
@@ -12,23 +14,23 @@ function addTitle(event){
     //Stop Refresh
     event.preventDefault();
 
-    // Variables to retrieve and store the userInput value
-    let userInputTitle = titleInput.value;
-    let userInputNoun = nounInput.value;
-    let userInputVerb = verbInput.value;
-    let userAdjectiveInput = adjectiveInput.value;
-
     // Output the information to the page using Variables & innerText
-    mainTitle.innerText = `${userInputTitle} ${userInputNoun} ${userInputVerb} ${userAdjectiveInput}`
-
+    mainTitle.innerText = titleInput.value;
 }
 
-function checkForBlank(){
+function checkForBlank(event){
+    //Stop Refresh
+    event.preventDefault();
+   
      // Variables to retrieve and store the userInput value
      let userInputTitle = titleInput.value;
      let userInputNoun = nounInput.value;
      let userInputVerb = verbInput.value;
      let userAdjectiveInput = adjectiveInput.value;
+
+     formContainer.style.display = "none";
+     storyResult.innerText = `Last night I ate a ${userInputNoun}, and today I just had to ${userInputVerb}. What a ${userAdjectiveInput} day!`;
+
 
      // Using a conditonal to check for blank fields
     if (userInputTitle == "" || userInputNoun == "" || userInputVerb == "" || userAdjectiveInput == ""){
